@@ -5,9 +5,8 @@ import org.slf4j.LoggerFactory
 import services.ScholarScraperService
 
 fun main(args: Array<String>) {
-    val logger = LoggerFactory.getLogger("MainLogger")
     // Constants
-    val authorIds = listOf("IPQZ4bkAAAAJ", "CQkvlpUAAAAJ", "5AXE0skAAAAJ")
+    val authorIds = System.getenv("AUTHORS")?.split(",") ?: listOf("IPQZ4bkAAAAJ", "CQkvlpUAAAAJ", "5AXE0skAAAAJ")
     // Get publications
     val scholarScraperService = ScholarScraperService()
     val publications = scholarScraperService.getPublications(authorIds)
